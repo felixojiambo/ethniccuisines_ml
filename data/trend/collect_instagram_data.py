@@ -14,7 +14,8 @@ for hashtag in hashtags:
     for post in instaloader.Hashtag.from_name(L.context, hashtag).get_posts():
         if len(posts) >= max_posts:
             break
-        posts.append(post.caption)
+        if post.caption:
+            posts.append(post.caption)
 
 # Save posts to a file
 with open('data/instagram_posts.json', 'w') as file:
